@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Tabla de Evaluación</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script type="text/javascript" src="./funciones.js"></script>
+  </head>
+
+  <body>
+    <div class="tabla-container">
+      <div class="botones">
+        <button onclick="addQuestion()">Añadir Pregunta</button>
+        <button onclick="removeLastQuestion()">Quitar Última Pregunta</button>
+        <button onclick="resetForm()">Limpiar Formulario</button>
+        <button onclick="generatePDF()">Generar PDF</button>
+      </div>
+      <table id="evaluacionTable" class="tabla">
+        <thead>
+          <tr>
+            <th>
+              <input
+                type="text"
+                name="alumno"
+                placeholder="Nombre del Alumno"
+                oninput="updateAlumnoName(this.value)"
+              />
+            </th>
+            <th>Nunca</th>
+            <th>Casi nunca</th>
+            <th>A veces</th>
+            <th>Siempre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. La clase de Educación Física hace que me sienta bien</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(0, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(0, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(0, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(0, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>2. El maestro nos trata de manera adecuada</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(1, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(1, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(1, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(1, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>3. Explica los ejercicios y actividades con claridad</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(2, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(2, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(2, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(2, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>4. Se dirige a nosotros con respeto</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(3, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(3, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(3, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(3, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>5. Se puede hablar con él</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(4, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(4, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(4, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(4, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>6. Se preocupa por nosotros</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(5, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(5, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(5, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(5, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>7. Nos anima durante los ejercicios y actividades</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(6, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(6, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(6, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(6, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>8. Muestra entusiasmo durante las clases</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(7, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(7, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(7, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(7, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>9. Tiene unas normal claras para la clase</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(8, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(8, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(8, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(8, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>10. Partcipa con nosotros en las actividades</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(9, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(9, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(9, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(9, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>11. Es muy estricto y rígido</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(10, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(10, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(10, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(10, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>12. Atiende a nuestras prnuestas y las valora</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(11, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(11, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(11, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(11, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>13. Nos corrige cuando actuamos de manera inapropiada</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(12, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(12, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(12, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(12, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>14. Pregunta si entendemos lo que nos propone</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(13, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(13, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(13, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(13, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>15. Evalúa de forma correcta</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(14, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(14, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(14, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(14, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>16. Ayuda a realizar las actividades a quien lo necesita</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(15, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(15, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(15, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(15, 3)" />
+            </td>
+          </tr>
+          <tr>
+            <td>17. Cuando 'Castiga" suele tener razón</td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(16, 0)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(16, 1)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(16, 2)" />
+            </td>
+            <td>
+              <input type="checkbox" onchange="handleCheckboxChange(16, 3)" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
