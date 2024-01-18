@@ -45,6 +45,12 @@ input[type="checkbox"] {
   display: block;
   margin: auto;
 }
+input[type="text"] {
+  border-radius: 20px;
+  height: 2rem;
+  width: 90%;
+  padding-left: 10px;
+}
 
 .botones {
   /* background-color: yellow; */
